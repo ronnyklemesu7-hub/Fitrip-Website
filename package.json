@@ -1,0 +1,13 @@
+{
+  "name": "fitrip-website",
+  "version": "1.0.0",
+  "description": "Fitrip Fitness Club Website",
+  "main": "index.html",
+  "scripts": {
+    "dev": "cd \"fitrip club\" && browser-sync start --server --files \"*.html, images/*\"",
+    "start": "python -m http.server --directory 'fitrip club' 8000"
+  },
+  "devDependencies": {
+    "browser-sync": "^3.0.0"
+  }
+}
