@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF_8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>SPINNING PROGRAM — FITRIP FITNESS CLUB</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;600;800&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --black: #000000;
+            --charcoal: #141414;
+            --red: #FF1A1A;
+            --red-deep: #CC0000;
+            --gold: #E5B829;
+            --gold-deep: #B88A1A;
+            --white: #ffffff;
+            --gray: #ccc;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--black);
+            color: var(--white);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            position: relative;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1591291621164-2c6367723315?w=1920&q=80') center/cover no-repeat;
+        }
+
+        .hero-content h1 {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(60px, 10vw, 120px);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin: 0;
+            line-height: 0.9;
+        }
+
+        .hero-content h1 span {
+            background: linear-gradient(135deg, var(--red) 0%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: var(--gold);
+            margin-top: 20px;
+        }
+
+        .nav-back {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            z-index: 10;
+        }
+
+        .nav-back a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 13px;
+            transition: color 0.3s;
+        }
+
+        .nav-back a:hover {
+            color: var(--gold);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        .program-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 100px;
+        }
+
+        .info-text h2 {
+            font-family: 'Anton', sans-serif;
+            font-size: 48px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .info-text p {
+            color: #ccc;
+            line-height: 1.8;
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+
+        .benefits-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 30px;
+        }
+
+        .benefits-list li {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            font-size: 16px;
+            color: #eee;
+        }
+
+        .benefits-list i {
+            color: var(--gold);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 18px 40px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-size: 14px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .btn-red {
+            background: linear-gradient(135deg, var(--red), var(--red-deep));
+            color: white;
+        }
+
+        .btn-red:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 26, 26, 0.3);
+        }
+
+        /* FORM STYLING */
+        .registration-section {
+            background: var(--charcoal);
+            border-radius: 12px;
+            padding: 60px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
+        }
+
+        .registration-section h2 {
+            font-family: 'Anton', sans-serif;
+            font-size: 42px;
+            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: 10px;
+            letter-spacing: 0.02em;
+        }
+
+        .registration-section p.sub-head {
+            text-align: center;
+            color: var(--gold);
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            font-size: 12px;
+            margin-bottom: 50px;
+        }
+
+        .form-group-title {
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--gold);
+            font-size: 14px;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(229, 184, 41, 0.2);
+        }
+
+        .form-group-title:first-child {
+            margin-top: 0;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .form-field {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-field.full {
+            grid-column: span 2;
+        }
+
+        .form-field label {
+            font-size: 11px;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: #bbb;
+        }
+
+        .form-field input,
+        .form-field select,
+        .form-field textarea {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            padding: 14px;
+            color: rgb(61, 46, 46);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        .form-field input:focus,
+        .form-field select:focus,
+        .form-field textarea:focus {
+            border-color: var(--gold);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            color: #ccc;
+            font-size: 13px;
+        }
+
+        .checkbox-item input {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--red);
+        }
+
+        .submit-area {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        #success-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+            padding: 20px;
+        }
+
+        .success-card {
+            background: var(--charcoal);
+            padding: 60px 40px;
+            border-radius: 12px;
+            text-align: center;
+            max-width: 550px;
+            border: 1px solid var(--gold);
+            box-shadow: 0 0 50px rgba(229, 184, 41, 0.15);
+        }
+
+        @media (max-width: 900px) {
+            .program-info {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .benefits-list li {
+                justify-content: center;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-field.full {
+                grid-column: span 1;
+            }
+
+            .registration-section {
+                padding: 40px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="nav-back">
+        <a href="index.html">
+            <i data-lucide="arrow-left"></i>
+            Back to Main
+        </a>
+    </div>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>SPINNING <span>PROGRAM</span></h1>
+            <p>Ride The Rhythm. Feel The Burn.</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="program-info">
+            <div class="info-text">
+                <h2>Why Choose <span class="gold">Cycling?</span></h2>
+                <p>Spinning is more than just a workout; it's a high-intensity, low-impact experience that transforms
+                    your body and mind. At Fitrip, our spinning studio features state-of-the-art bikes, immersive sound
+                    systems, and instructors who push you to your absolute limits.</p>
+
+                <ul class="benefits-list">
+                    <li><i data-lucide="heart"></i> <strong>Massive Cardio Boost:</strong> Strengthen your heart and
+                        lungs with every pedal.</li>
+                    <li><i data-lucide="flame"></i> <strong>High Calorie Burn:</strong> Burn 400-800 calories in a
+                        single 45-minute session.</li>
+                    <li><i data-lucide="shield-check"></i> <strong>Low Impact:</strong> Get a powerful workout without
+                        stressing your joints.</li>
+                    <li><i data-lucide="zap"></i> <strong>Leg Power:</strong> Build lean muscle in your quads, glutes,
+                        and calves.</li>
+                    <li><i data-lucide="smile"></i> <strong>Mental Clarity:</strong> Release endorphins and smash stress
+                        with high-energy music.</li>
+                </ul>
+
+                <a href="#register" class="btn btn-red">Join The Club</a>
+            </div>
+            <div class="info-image">
+                <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&q=80" alt="Spinning Class"
+                    style="width:100%; border-radius:12px; box-shadow: 0 20px 40px rgba(0,0,0,0.5);">
+            </div>
+        </div>
+
+        <div class="registration-section" id="register">
+            <h2>Join the Cycling Club</h2>
+            <p class="sub-head">FITRIP ACCRA CYCLING MEMBERSHIP</p>
+
+            <form id="spinning-reg-form">
+                <div class="form-group-title">Personal Details</div>
+                <div class="form-grid">
+                    <div class="form-field full">
+                        <label>Full Name</label>
+                        <input type="text" name="fullName" required placeholder="Enter your full name">
+                    </div>
+                    <div class="form-field">
+                        <label>Email Address</label>
+                        <input type="email" name="email" required placeholder="yourname@example.com">
+                    </div>
+                    <div class="form-field">
+                        <label>Phone Number</label>
+                        <input type="tel" name="phone" required placeholder="+233 XX XXX XXXX">
+                    </div>
+                </div>
+
+                <div class="form-group-title">Training Preferences</div>
+                <div class="form-grid">
+                    <div class="form-field">
+                        <label>Experience Level</label>
+                        <select name="experience" required>
+                            <option value="">Select Level</option>
+                            <option value="beginner">Beginner (Never Spun)</option>
+                            <option value="intermediate">Intermediate (Regular Rider)</option>
+                            <option value="advanced">Advanced (Cycling Pro)</option>
+                        </select>
+                    </div>
+                    <div class="form-field">
+                        <label>Preferred Session Time</label>
+                        <select name="timeSlot" required>
+                            <option value="">Select Time</option>
+                            <option value="morning">Early Bird (5 AM - 8 AM)</option>
+                            <option value="lunch">Lunch Power (12 PM - 2 PM)</option>
+                            <option value="evening">After Work (5 PM - 8 PM)</option>
+                            <option value="weekend">Weekend Warriors</option>
+                        </select>
+                    </div>
+                    <div class="form-field full">
+                        <label>Main Fitness Goal</label>
+                        <textarea name="goals" rows="2" placeholder="e.g. Weight loss, endurance, heart health..."></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group-title">Health & Safety</div>
+                <div class="form-field full" style="margin-bottom: 20px;">
+                    <label class="checkbox-item" style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                        <input type="checkbox" id="has-medical-toggle" name="hasMedical" style="width: 20px; height: 20px; accent-color: var(--red);">
+                        <span style="color: var(--gold); font-weight: 700; font-size: 14px;">I have a pre-existing medical condition or physical limitation.</span>
+                    </label>
+                </div>
+
+                <div id="medical-info-section" style="display: none; background: rgba(255, 26, 26, 0.05); border-left: 4px solid var(--red); padding: 25px; border-radius: 8px; margin-bottom: 30px;">
+                    <div class="form-grid">
+                        <div class="form-field full">
+                            <label>Please describe your condition/limitation</label>
+                            <textarea name="medicalDetails" rows="2" placeholder="e.g. Previous knee injury, heart condition, asthma etc."></textarea>
+                        </div>
+                        <div class="form-field">
+                            <label>Are you on any medication?</label>
+                            <input type="text" name="medications" placeholder="Specify medications if any">
+                        </div>
+                        <div class="form-field">
+                            <label>Emergency Contact Number</label>
+                            <input type="tel" name="emergencyPhone" placeholder="In case of emergency">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group-title">Agreements</div>
+                <div class="checkbox-group">
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="waiver" required>
+                        <span>I agree to the health & safety waiver.</span>
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="terms" required>
+                        <span>I agree to the Fitrip club rules.</span>
+                    </label>
+                </div>
+
+                <div class="submit-area">
+                    <button type="submit" class="btn btn-red">Submit Membership Request</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="success-overlay">
+        <div class="success-card">
+            <div
+                style="background: var(--gold); width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 30px;">
+                <i data-lucide="check" style="color: black; width: 40px; height: 40px; stroke-width: 3;"></i>
+            </div>
+            <h2 style="font-family: 'Anton'; font-size: 36px; margin-bottom: 20px;">WELCOME ABOARD!</h2>
+            <p style="color: #aaa; line-height: 1.8; margin-bottom: 35px; font-size: 16px;">Your cycling club membership
+                request has been received. Our team will contact you within 24 hours to schedule your first ride!</p>
+            <button class="btn btn-red" onclick="window.location.href='index.html'">Return to Homepage</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize icons
+            try {
+                if (typeof lucide !== 'undefined') {
+                    lucide.createIcons();
+                }
+            } catch (err) {
+                console.error('Lucide icons failed to load:', err);
+            }
+
+            // Health Toggle Logic
+            const medicalToggle = document.getElementById('has-medical-toggle');
+            const medicalSection = document.getElementById('medical-info-section');
+
+            if (medicalToggle && medicalSection) {
+                const toggle = () => {
+                    if (medicalToggle.checked) {
+                        medicalSection.style.setProperty('display', 'block', 'important');
+                        medicalSection.querySelectorAll('textarea, input').forEach(el => el.required = true);
+                    } else {
+                        medicalSection.style.setProperty('display', 'none', 'important');
+                        medicalSection.querySelectorAll('textarea, input').forEach(el => el.required = false);
+                    }
+                };
+
+                medicalToggle.addEventListener('change', toggle);
+                medicalToggle.addEventListener('click', toggle);
+            }
+
+            // Form Submit Logic
+            const form = document.getElementById('spinning-reg-form');
+            if (form) {
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+
+                    // Collect data
+                    const formData = new FormData(form);
+                    const data = {};
+                    formData.forEach((value, key) => {
+                        data[key] = value;
+                    });
+
+                    // Save to localStorage
+                    const existing = JSON.parse(localStorage.getItem('fitrip_spinning_regs') || '[]');
+                    existing.push({
+                        ...data,
+                        id: Date.now(),
+                        submittedAt: new Date().toISOString()
+                    });
+                    localStorage.setItem('fitrip_spinning_regs', JSON.stringify(existing));
+
+                    // Show success
+                    document.getElementById('success-overlay').style.display = 'flex';
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
