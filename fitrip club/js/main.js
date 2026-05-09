@@ -569,3 +569,25 @@ const facilities = [
     adminSearch.addEventListener('input', renderTable);
     adminPlanFilter.addEventListener('change', renderTable);
     adminSort.addEventListener('change', renderTable);
+/* ============ LOGO HOVER REVEAL ============ */
+const logoLink = document.querySelector('.nav .logo');
+const brandText = document.querySelector('.brand-text');
+let revealTimeout, hideTimeout;
+
+if (logoLink && brandText) {
+  logoLink.addEventListener('mouseenter', () => {
+    clearTimeout(hideTimeout);
+    revealTimeout = setTimeout(() => {
+      brandText.classList.add('visible');
+    }, 400);
+  });
+
+  logoLink.addEventListener('mouseleave', () => {
+    clearTimeout(revealTimeout);
+    hideTimeout = setTimeout(() => {
+      brandText.classList.remove('visible');
+    }, 1500);
+  });
+}
+
+lucide.createIcons();
