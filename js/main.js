@@ -591,3 +591,96 @@ if (logoLink && brandText) {
 }
 
 lucide.createIcons();
+
+/* ============ HERO PARTICLES ============ */
+function initHeroParticles() {
+  const canvas = document.getElementById('hero-particles');
+  if (!canvas || window.innerWidth < 768) return; 
+
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  const particleCount = 60;
+
+  class Particle {
+    constructor() {
+      this.init();
+    }
+    init() {
+      this.x = Math.random() * canvas.width;
+      this.y = Math.random() * canvas.height;
+      this.vx = (Math.random() - 0.5) * 0.4;
+      this.vy = (Math.random() - 0.5) * 0.4;
+      this.radius = Math.random() * 2 + 1;
+      this.color = Math.random() > 0.5 ? 'rgba(255, 26, 26, 0.25)' : 'rgba(229, 184, 41, 0.25)';
+    }
+    update() {
+      this.x += this.vx;
+      this.y += this.vy;
+      if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+      if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+    }
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      ctx.fillStyle = this.color;
+      ctx.fill();
+    }
+  }
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  function initParticles() {
+    particles = [];
+    for (let i = 0; i < particleCount; i++) {
+      particles.push(new Particle());
+    }
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+      p.update();
+      p.draw();
+    });
+    requestAnimationFrame(animate);
+  }
+
+  window.addEventListener('resize', () => {
+    resize();
+    if (particles.length === 0 && window.innerWidth >= 768) {
+      initParticles();
+    }
+  });
+
+  resize();
+  initParticles();
+  animate();
+}
+
+/* ============ SCROLL REVEAL ============ */
+function initScrollReveal() {
+  const revealCallback = (entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+      }
+    });
+  };
+
+  const revealObserver = new IntersectionObserver(revealCallback, {
+    threshold: 0.15
+  });
+
+  document.querySelectorAll('.reveal').forEach(el => {
+    revealObserver.observe(el);
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initHeroParticles();
+  initScrollReveal();
+});
+

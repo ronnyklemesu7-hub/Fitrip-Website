@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="icon" type="image/jpeg" href="images/favicon.jpg">
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spinning Studio Gallery — FITRIP FITNESS CLUB</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;600;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/spinning-studio.css">
+</head>
+
+<body>
+
+    <!-- LIGHTBOX OVERLAY -->
+    <div id="lightbox">
+        <button class="lb-close" id="lb-close">&times;</button>
+        <button class="lb-nav" id="lb-prev">&#8592;</button>
+        <img id="lb-img" src="" alt="">
+        <button class="lb-nav" id="lb-next">&#8594;</button>
+        <div id="lb-caption"></div>
+        <div id="lb-counter"></div>
+    </div>
+
+    <div class="header">
+        <div class="nav-back">
+            <a href="index.html">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m15 18-6-6 6-6" />
+                </svg>
+                Back to Main Menu
+            </a>
+        </div>
+        <h1>Spinning <span>Studio</span></h1>
+        <p>High-energy indoor cycling sessions with state-of-the-art bikes and sound system.</p>
+    </div>
+
+    <div class="gallery">
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1591291621164-2c6367723315?w=800&q=80" alt="Spinning Studio">
+            <div class="lb-hint"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor" stroke-width="1.8">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M21 21l-4.35-4.35M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11 8v6M8 11h6" />
+                </svg></div>
+        </div>
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&q=80" alt="Cycle Class">
+            <div class="lb-hint"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor" stroke-width="1.8">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M21 21l-4.35-4.35M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11 8v6M8 11h6" />
+                </svg></div>
+        </div>
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800&q=80" alt="Cardio Training">
+            <div class="lb-hint"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor" stroke-width="1.8">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M21 21l-4.35-4.35M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11 8v6M8 11h6" />
+                </svg></div>
+        </div>
+    </div>
+
+    <script src="js/spinning-studio.js"></script>
+
+</body>
+
+</html>

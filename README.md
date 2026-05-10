@@ -14,7 +14,6 @@ A local server is required to view the website correctly due to file paths and p
 
 #### Using Python (Simple)
 ```bash
-cd "fitrip club"
 python -m http.server 8000
 ```
 Then visit `http://localhost:8000`.
@@ -26,7 +25,9 @@ npm run dev
 ```
 
 ## Project Structure
-- `fitrip club/`: Main website files.
-  - `index.html`: Homepage.
-  - `yoga.html`, `aerobics.html`, etc.: Program pages.
-  - `images/`: Local image assets.
+- `index.html`: Homepage.
+- `aerobics.html`, `boxing-program.html`, etc.: Program and gallery pages.
+- `css/`: Modular stylesheets.
+- `js/`: Application logic.
+- `images/`: Local image assets.
+

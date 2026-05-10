@@ -553,9 +553,11 @@
     }
 
     .admin-login-card {
-      background: linear-gradient(145deg, #141414 0%, #1c1c1c 100%);
-      border: 1px solid rgba(229, 184, 41, .2);
-      border-radius: 10px;
+      background: rgba(20, 20, 20, 0.4);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
       padding: 44px 40px 36px;
       width: 100%;
       max-width: 400px;
@@ -724,6 +726,13 @@
       z-index: 0;
       transform: scale(1.05);
       animation: slowZoom 20s ease-in-out infinite alternate;
+    }
+
+    #hero-particles {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
     }
 
     @keyframes slowZoom {
@@ -1524,7 +1533,7 @@
     .cta {
       position: relative;
       background: linear-gradient(rgba(106, 124, 63, 0.92), rgba(0, 0, 0, 0.98)),
-        url("C:\Users\ronny\Downloads\download (2).jpg") center/cover no-repeat fixed;
+        url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1920&q=80") center/cover no-repeat fixed;
       border-top: 1px solid rgba(255, 255, 255, .06);
       position: relative;
       text-align: center
@@ -1610,7 +1619,7 @@
     footer {
       position: relative;
       background: linear-gradient(rgba(88, 128, 121, 0.92), rgba(0, 0, 0, 0.98)),
-        url('C:/Users/ronny/Downloads/download.jpg') top/cover no-repeat fixed;
+        url('https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=1920&q=80') top/cover no-repeat fixed;
       border-top: 1px solid rgba(255, 255, 255, .06);
       position: relative;
     }
